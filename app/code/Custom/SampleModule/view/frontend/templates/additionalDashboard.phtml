@@ -1,0 +1,18 @@
+<?php
+$objm = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objm->get('Magento\Customer\Model\Session');
+if($customerSession->isLoggedIn())
+{
+    $skype=   $customerSession->getCustomer()->getSkype();
+    // use your custom attribute name to get the value.
+}
+?>
+<div class="block block-dashboard-info">
+<div class="block-title"><strong><?= $block->escapeHtml(__('Skype Account')) ?></strong></div>
+    <div class="box-content">
+        <p>
+            <?= $skype ?><br>
+
+        </p>
+    </div>
+</div>
