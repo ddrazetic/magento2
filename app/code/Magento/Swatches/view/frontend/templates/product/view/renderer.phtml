@@ -15,11 +15,14 @@ $configurableViewModel = $block->getConfigurableViewModel()
     {
         "[data-role=swatch-options]": {
             "Magento_Swatches/js/swatch-renderer": {
-                "jsonConfig": <?= /* @noEscape */ $swatchOptions = $block->getJsonConfig() ?>,
-                "jsonSwatchConfig": <?= /* @noEscape */ $swatchOptions = $block->getJsonSwatchConfig() ?>,
+                "jsonConfig": <?= /* @noEscape */
+    $swatchOptions = $block->getJsonConfig() ?>,
+                "jsonSwatchConfig": <?= /* @noEscape */
+    $swatchOptions = $block->getJsonSwatchConfig() ?>,
                 "mediaCallback": "<?= $block->escapeJs($block->escapeUrl($block->getMediaCallback())) ?>",
                 "gallerySwitchStrategy": "<?= $block->escapeJs($block->getVar('gallery_switch_strategy', 'Magento_ConfigurableProduct')) ?: 'replace'; ?>",
-                "jsonSwatchImageSizeConfig": <?= /* @noEscape */ $block->getJsonSwatchSizeConfig() ?>,
+                "jsonSwatchImageSizeConfig": <?= /* @noEscape */
+    $block->getJsonSwatchSizeConfig() ?>,
                 "showTooltip": <?= $block->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>
             }
         },
@@ -27,4 +30,6 @@ $configurableViewModel = $block->getConfigurableViewModel()
             "Magento_Swatches/js/catalog-add-to-cart": {}
         }
     }
+
+
 </script>

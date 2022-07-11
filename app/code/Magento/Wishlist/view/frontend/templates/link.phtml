@@ -7,7 +7,9 @@
 /* @var \Magento\Wishlist\Block\Link $block */
 ?>
 <li class="link wishlist" data-bind="scope: 'wishlist'">
-    <a <?= /* @noEscape */ $block->getLinkAttributes() ?>><?= $block->escapeHtml($block->getLabel()) ?>
+    <a <?= /* @noEscape */
+    $block->getLinkAttributes() ?>>
+        <img class="sign-image-container" src="<?= $block->escapeHtml($block->getImage()) ?>" alt="wish list"/>
         <!-- ko if: wishlist().counter -->
         <span data-bind="text: wishlist().counter" class="counter qty"></span>
         <!-- /ko -->
@@ -25,5 +27,9 @@
             }
         }
     }
+
+
+
+
 
 </script>

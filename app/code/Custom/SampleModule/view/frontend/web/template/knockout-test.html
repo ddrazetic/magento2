@@ -1,0 +1,78 @@
+<div class="popup_wrap" data-bind="css:{open: showPopup  }   ">
+    <div class="popup"
+         data-bind="css:{popup:true, animate: showPopup}">
+        <button class="popup-close" data-bind="click: changeViewPopup(false)">X</button>
+        <h2 data-bind="text: title"></h2>
+        <h4 data-bind="text: text"></h4>
+        <div class="popup-links">
+            <button data-bind="click: openUrl.bind(this, urlHome()),clickBubble: false"
+                    class="gradient-button action">Home
+            </button>
+            <button data-bind="click: openUrl.bind(this,urlCheckout()),clickBubble: false"
+                    class="gradient-button action">Checkout
+            </button>
+            <!--            <a href="http://magento2.test"> Home</a>-->
+            <!--            <a href="http://magento2.test/checkout"> Checkout</a>-->
+        </div>
+    </div>
+</div>
+<div class="component-wrapper">
+    <ul class="products-slider-container product-slider"
+        data-bind="foreach: products ">
+        <li data-bind="style: $parent.styling() ">
+            <div>
+                <h1 data-bind="text: name"></h1>
+                <p data-bind="html: description"></p>
+
+                <!--                <h1 data-bind="text: url_key"></h1>-->
+                <a class="link-slider-product" data-bind="attr: { href: 'http://magento2.test/' + url_key + '.html' }">More
+                    about product</a>
+                <!--                <p>sfdsfd</p>-->
+                <form data-bind="submit: function(){return $parent.addService(urlCart) }">
+
+                    <!-- ko if: type_id == "configurable" -->
+                    <span>Color</span>
+                    <div class="inputs-color" data-bind="foreach: $parent.optionColors">
+                        <label class="input-container">
+                            <input type="radio"
+                                   name="availableNumbersGroup"
+                                   data-bind="checkedValue:$data, checked:$parents[1].chosenColor, disable: $parents[1].isDisabledColor($data)"/>
+                            <!--                        <span data-bind="text:$data"></span>-->
+                            <span class="checkmark" data-bind="css: 'stylesClass' + $data  "></span>
+                        </label>
+                    </div>
+                    <!--                    <p data-bind="text: $parent.chosenColor"></p>-->
+                    <div class="blank-space"></div>
+                    <span>Size</span>
+
+                    <div class="inputs-color" data-bind="foreach: $parent.optionSizes">
+                        <label class="input-container">
+                            <input type="radio"
+                                   name="availableNumbersGroup11"
+                                   data-bind="checkedValue:$data, checked:$parents[1].chosenSize, disable: $parents[1].isDisabledSize($data)"/>
+                            <!--                        <span data-bind="text:$data"></span>-->
+                            <span class="checkmark checkmark-size" data-bind="text: $data "></span>
+                        </label>
+                    </div>
+
+                    <!-- /ko -->
+                    <div class="button-container">
+                        <button class="action tocart primary buttonaddtocart" type=" submit">Add to cart</button>
+                        <div class="input-quantity">
+                            <input type="number" name="chosenQuantity"
+                                   data-bind="value: $parent.chosenQuantity, attr: {max: 1000, min: 1, step: 1}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <img class="product-slider-image"
+                 data-bind="attr: { src: 'http://magento2.test/pub/media/catalog/product' + image, alt: 'image product' }"></img>
+        </li>
+    </ul>
+    <div class="buttons-container-slider">
+        <button data-bind="click: previousProduct, enable: marginSlider() > 0 "><</button>
+        <button data-bind="click: nextProduct , enable: marginSlider() < products().length - 1 ">></button>
+    </div>
+
+</div>

@@ -7,6 +7,7 @@
 /**
  * "My Wish List" link
  */
+
 namespace Magento\Wishlist\Block;
 
 use Magento\Customer\Block\Account\SortLinkInterface;
@@ -39,9 +40,10 @@ class Link extends \Magento\Framework\View\Element\Html\Link implements SortLink
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Wishlist\Helper\Data $wishlistHelper,
-        array $data = []
-    ) {
+        \Magento\Wishlist\Helper\Data                    $wishlistHelper,
+        array                                            $data = []
+    )
+    {
         $this->_wishlistHelper = $wishlistHelper;
         parent::__construct($context, $data);
     }
@@ -71,6 +73,12 @@ class Link extends \Magento\Framework\View\Element\Html\Link implements SortLink
     public function getLabel()
     {
         return __('My Wish List');
+    }
+
+    public function getImage()
+    {
+        return __('http://magento2.test/pub/media/svg-icons/paper-svgrepo-com.svg');
+
     }
 
     /**

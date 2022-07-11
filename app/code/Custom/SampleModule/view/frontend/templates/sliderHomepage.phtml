@@ -1,0 +1,233 @@
+<?php
+$productCollection = $block->getProductCollection()->toArray();
+$products = $block->getProductCollection();
+$productUrls = [];
+foreach ($products as $product) {
+//    echo '<pre>', var_dump($product), '</pre>';
+    $productId = $product->getData("entity_id");
+//    echo $productId;
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $productt = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
+    $addToCartUrl = $objectManager->get('Magento\Checkout\Helper\Cart')->getAddUrl($productt);
+    $productUrls[] = $addToCartUrl;
+
+}
+$productConf = $block->getProductConfigurable();
+foreach ($productConf as $product) {
+    $_children = $product->getTypeInstance()->getUsedProducts($product);
+//    echo '<pre>', var_dump($product->getOptions()), '</pre>';
+}
+//$colorOptions = [];
+//$sizeOptions = [];
+$options = [];
+foreach ($_children as $child) {
+//    $colorOptions[] = $child->getColor();
+//    $sizeOptions[] = $child->getSize();
+    $parentId = '';
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $product = $objectManager->create('Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable')->getParentIdsByChild($child->getId());
+    if (isset($product[0])) {
+        $parentId = $product[0];
+    }
+    $options[] = array("color" => $child->getColor(),
+        "size" => $child->getSize(),
+        "id" => $child->getId(),
+        "parentId" => $parentId);
+//    echo '<pre>', var_dump($child->toArray()), '</pre>';
+}
+
+//echo '<pre>', var_dump($colorOptions), '</pre>';
+//echo '<pre>', var_dump($sizeOptions), '</pre>';
+//echo '<pre>', var_dump($options), '</pre>';
+//echo "dadad";
+//$dataaa = $this->scopeConfig->getValue('samplemodule/general/display_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+$display_title = $block->getConfigValue('samplemodule/general/display_title');
+$display_text = $block->getConfigValue('samplemodule/general/display_text');
+
+//echo $configValue;
+?>
+
+<form data-role="tocart-form"
+      action="http://magento2.test/checkout/cart/add/uenc/aHR0cDovL21hZ2VudG8yLnRlc3Qv/product/9/" method="post">
+    <?php echo $block->getBlockHtml('formkey') ?>
+    <button type="submit"
+            title="Add to Cart"
+            class="action tocart primary">
+        <span>Add to Cart</span>
+    </button>
+</form>
+
+<script type="application/javascript">
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ], function ($) {
+        'use strict';
+        $(document).ready(function () {
+
+        });
+    });
+</script>
+<!--<div class="swatch-opt" data-role="swatch-options"></div>-->
+
+<div id="custom-component" data-bind="scope:'customcomponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#custom-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "customcomponent": {
+                        "component": "Custom_SampleModule/js/custom-component",
+                        "items": <?php echo json_encode($productCollection); ?>,
+                        "itemUrls": <?php echo json_encode($productUrls); ?>,
+                        "options": <?php echo json_encode($options); ?>,
+                        "title": <?php echo json_encode($display_title); ?>,
+                        "text": <?php echo json_encode($display_text); ?>
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</div>
+
+

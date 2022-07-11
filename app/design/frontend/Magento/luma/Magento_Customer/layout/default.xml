@@ -21,3 +21,4 @@
         <move element="authorization-link" destination="top.links" after="-"/>
     </body>
 </page>
+

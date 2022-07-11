@@ -3,6 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Magento\Customer\Block\Account;
 
 use Magento\Customer\Model\Context;
@@ -43,11 +44,12 @@ class AuthorizationLink extends \Magento\Framework\View\Element\Html\Link implem
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\App\Http\Context $httpContext,
-        \Magento\Customer\Model\Url $customerUrl,
-        \Magento\Framework\Data\Helper\PostHelper $postDataHelper,
-        array $data = []
-    ) {
+        \Magento\Framework\App\Http\Context              $httpContext,
+        \Magento\Customer\Model\Url                      $customerUrl,
+        \Magento\Framework\Data\Helper\PostHelper        $postDataHelper,
+        array                                            $data = []
+    )
+    {
         parent::__construct($context, $data);
         $this->httpContext = $httpContext;
         $this->_customerUrl = $customerUrl;
@@ -70,6 +72,13 @@ class AuthorizationLink extends \Magento\Framework\View\Element\Html\Link implem
     public function getLabel()
     {
         return $this->isLoggedIn() ? __('Sign Out') : __('Sign In');
+//        return $this->isLoggedIn() ? __('http://magento2.test/pub/media/svg-icons/remove-user-svgrepo-com.svg') : __('http://magento2.test/pub/media/svg-icons/user-list-svgrepo-com.svg');
+    }
+
+    public function getImage()
+    {
+//        return $this->isLoggedIn() ? __('Sign Out') : __('Sign In');
+        return $this->isLoggedIn() ? __('http://magento2.test/pub/media/svg-icons/remove-user-svgrepo-com.svg') : __('http://magento2.test/pub/media/svg-icons/user-list-svgrepo-com.svg');
     }
 
     /**
