@@ -8,6 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 <head>
     <css src="Custom_SampleModule::css/myStyle.css" />
+<!--    <script  src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.7/dist/lazyload.min.js" src_type="url" />-->
     <script src="Custom_SampleModule::js/myJs.js"/>
 </head>
     <body>

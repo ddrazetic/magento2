@@ -250,8 +250,10 @@ body {
 
 .popup {
     /*width: 40%;*/
-    /*min-height: 300px;*/
+    /*height: 800px;*/
     /*padding: 150px 75px;*/
+    max-height: 100vh;
+    overflow: auto;
     transform: translate(-50%, -55%);
     position: absolute;
     top: 50%;
@@ -296,10 +298,43 @@ body {
     justify-content: center;
     color: white;
     width: 150px;
-    height: 50px;
-    padding: 50px 5px;
+    /*height: 50px;*/
+    padding: 40px 5px;
     text-shadow: 2px 2px 2px #000;
     font-size: 25px;
+}
+
+.products-by-category {
+    list-style-type: none;
+    text-align: left;
+}
+
+.products-by-category li {
+    text-decoration-line: none;
+    display: flex;
+    align-items: center;
+    border-top: solid 1px #cecece;
+}
+
+.product-popup-image {
+    height: 100px;
+    width: 100px;
+    /*float: left;*/
+
+}
+
+.popup-product-text {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.popup-product-text form input {
+    float: right;
+    width: 50px;
+}
+
+.popup-product-text form button {
+    float: right;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -318,6 +353,13 @@ body {
 
     }
 
+
+}
+
+@media only screen and (max-width: 700px) {
+    .popup {
+        width: 100%;
+    }
 
     .popup-links {
         display: flex;

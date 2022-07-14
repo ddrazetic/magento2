@@ -2,10 +2,24 @@
 $productCollection = $block->getProductCollection()->toArray();
 $products = $block->getProductCollection();
 $productUrls = [];
+$productCategoryId = [];
+//$productId = 10;  //product id
+//$category = $block->getCategoryIds($productId);
+//var_dump($category);
 foreach ($products as $product) {
-//    echo '<pre>', var_dump($product), '</pre>';
+//    echo 'next: ';
     $productId = $product->getData("entity_id");
-//    echo $productId;
+//    $categoryId = $product->getCategoryIds();
+//    var_dump($categoryId[0]);
+//    if ($categoryIds = $product->getCustomAttribute('category_ids')) {
+//        foreach ($categoryIds->getValue() as $categoryId) {
+//            $category = $this->categoryRepository->get($categoryId);
+//            echo($category);
+//        }
+//    }
+    $category = $block->getCategoryIds($productId);
+    $productCategoryId[] = $category[1];
+//    echo $category[1];
     $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
     $productt = $objectManager->create('Magento\Catalog\Model\Product')->load($productId);
     $addToCartUrl = $objectManager->get('Magento\Checkout\Helper\Cart')->getAddUrl($productt);
@@ -45,30 +59,25 @@ $display_title = $block->getConfigValue('samplemodule/general/display_title');
 $display_text = $block->getConfigValue('samplemodule/general/display_text');
 
 //echo $configValue;
+// print current category data
+//echo "ebwfuygeierwc";
+//if ($currentCategory = $block->getCurrentCategory()) {
+//    echo $currentCategory->getName() . '<br />';
+//    echo $currentCategory->getId() . '<br />';
+//}
 ?>
 
-<form data-role="tocart-form"
-      action="http://magento2.test/checkout/cart/add/uenc/aHR0cDovL21hZ2VudG8yLnRlc3Qv/product/9/" method="post">
-    <?php echo $block->getBlockHtml('formkey') ?>
-    <button type="submit"
-            title="Add to Cart"
-            class="action tocart primary">
-        <span>Add to Cart</span>
-    </button>
-</form>
-
-<script type="application/javascript">
-    require([
-        'jquery',
-        'jquery/jquery.cookie'
-    ], function ($) {
-        'use strict';
-        $(document).ready(function () {
-
-        });
-    });
-</script>
-<!--<div class="swatch-opt" data-role="swatch-options"></div>-->
+<!--<script type="application/javascript">-->
+<!--    require([-->
+<!--        'jquery',-->
+<!--        'jquery/jquery.cookie'-->
+<!--    ], function ($) {-->
+<!--        'use strict';-->
+<!--        $(document).ready(function () {-->
+<!---->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 <div id="custom-component" data-bind="scope:'customcomponent'">
     <!-- ko template: getTemplate() --><!-- /ko -->
@@ -81,6 +90,7 @@ $display_text = $block->getConfigValue('samplemodule/general/display_text');
                         "component": "Custom_SampleModule/js/custom-component",
                         "items": <?php echo json_encode($productCollection); ?>,
                         "itemUrls": <?php echo json_encode($productUrls); ?>,
+                        "itemCategoryId": <?php echo json_encode($productCategoryId); ?>,
                         "options": <?php echo json_encode($options); ?>,
                         "title": <?php echo json_encode($display_title); ?>,
                         "text": <?php echo json_encode($display_text); ?>
@@ -89,130 +99,6 @@ $display_text = $block->getConfigValue('samplemodule/general/display_text');
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

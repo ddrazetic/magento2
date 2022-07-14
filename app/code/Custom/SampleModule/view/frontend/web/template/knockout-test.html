@@ -11,14 +11,32 @@
             <button data-bind="click: openUrl.bind(this,urlCheckout()),clickBubble: false"
                     class="gradient-button action">Checkout
             </button>
-            <!--            <a href="http://magento2.test"> Home</a>-->
-            <!--            <a href="http://magento2.test/checkout"> Checkout</a>-->
+            <button data-bind="click: changeViewMoreProducts"
+                    class="gradient-button action">Buy more
+            </button>
+
         </div>
+        <ul class="products-by-category"
+            data-bind="foreach: productsByCategory, visible: showMoreProducts">
+            <li data-bind=" ">
+                <img class="product-popup-image"
+                     data-bind="attr: { src: 'http://magento2.test/pub/media/catalog/product' + custom_attributes[0].value, alt: 'image product' }"></img>
+                <div class="popup-product-text">
+                    <p data-bind="text: name"></p>
+                    <form
+                        data-bind="submit: function(){return $parent.addService('http://magento2.test/checkout/cart/add/uenc/aHR0cDovL21hZ2VudG8yLnRlc3Qv/product/',1,id) }">
+                        <button class="action tocart primary buttonaddtocart" type=" submit">Add to cart</button>
+                        <input type="number" name="chosenQuantity"
+                               data-bind="value: $parent.chosenQuantity, attr: {max: 1000, min: 1, step: 1}"/>
+                    </form>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
-<div class="component-wrapper">
-    <ul class="products-slider-container product-slider"
-        data-bind="foreach: products ">
+
+<div class="component-wrapper" data-bind=" visible: products().length">
+    <ul class="products-slider-container product-slider" data-bind="foreach: products ">
         <li data-bind="style: $parent.styling() ">
             <div>
                 <h1 data-bind="text: name"></h1>
@@ -27,8 +45,7 @@
                 <!--                <h1 data-bind="text: url_key"></h1>-->
                 <a class="link-slider-product" data-bind="attr: { href: 'http://magento2.test/' + url_key + '.html' }">More
                     about product</a>
-                <!--                <p>sfdsfd</p>-->
-                <form data-bind="submit: function(){return $parent.addService(urlCart) }">
+                <form data-bind="submit: function(){return $parent.addService(urlCart,category_id, '') }">
 
                     <!-- ko if: type_id == "configurable" -->
                     <span>Color</span>

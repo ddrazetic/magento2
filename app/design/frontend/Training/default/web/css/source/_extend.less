@@ -1,0 +1,102 @@
+@theme__color__primary__checkout: #ff0000;
+@theme__color__primary-alt__checkout: #8f3636;
+@theme__color__secondary__checkout: #4d4d4d;
+
+@primary__color__checkout: #3b1a1a;
+@primary__color__dark__checkout: darken(@primary__color__checkout, 35%); // #000
+@primary__color__darker__checkout: darken(@primary__color__checkout, 13.5%); // #111
+@primary__color__lighter__checkout: lighten(@primary__color__checkout, 29%); // #7d7d7d
+@primary__color__light__checkout: lighten(@primary__color__checkout, 45%); // #a6a6a6
+
+@secondary__color__checkout: #f8d3d3;
+@secondary__color__light__checkout: lighten(@secondary__color__checkout, 5%);
+
+@page__background-color__checkout: #ffdbdb;
+@panel__background-color__checkout: darken(@page__background-color__checkout, 6%);
+
+@active__color__checkout: @theme__color__secondary__checkout;
+@error__color__checkout: #e02b27;
+
+
+//@theme__color__primary: @color-blue1; // #1979C3
+//@theme__color__primary-alt: @color-blue2; // #006BB4
+//@theme__color__secondary: @color-orange-red1; //FF5501
+//
+//@primary__color: @color-gray20;
+//@primary__color__dark: darken(@primary__color, 35%); // #000
+//@primary__color__darker: darken(@primary__color, 13.5%); // #111
+//@primary__color__lighter: lighten(@primary__color, 29%); // #7d7d7d
+//@primary__color__light: lighten(@primary__color, 45%); // #a6a6a6
+//
+//@secondary__color: @color-gray91;
+//@secondary__color__light: lighten(@secondary__color, 5%);
+//
+//@page__background-color: @color-white;
+//@panel__background-color: darken(@page__background-color, 6%);
+//
+//@active__color: @theme__color__secondary;
+//@error__color: @color-red10;
+
+
+.checkout-index-index {
+    background-color: @page__background-color__checkout;
+
+    .action {
+        color: @theme__color__primary-alt__checkout;
+
+        span {
+            color: @theme__color__primary-alt__checkout;
+
+        }
+    }
+
+    a {
+        color: @theme__color__primary-alt__checkout;
+    }
+
+    .action.primary {
+        background: @theme__color__primary__checkout;
+        border: 1px solid @theme__color__primary__checkout;
+    }
+
+    .opc-progress-bar-item._active:before {
+        background: @active__color__checkout;
+        border-color: @active__color__checkout;
+    }
+
+    .opc-progress-bar-item._active > span:before {
+        background: @active__color__checkout;
+        border-color: @active__color__checkout;
+    }
+
+    .opc-progress-bar-item._active > span:after {
+        border-color: @active__color__checkout;
+
+    }
+
+
+    //SIGNED IN-----------------------
+
+
+    .opc-wrapper .shipping-address-item.selected-item {
+        border-color: @active__color__checkout;
+    }
+
+    .opc-wrapper .shipping-address-item.selected-item:after {
+        background: @active__color__checkout;
+        color: #fff;
+        content: '\e610';
+        font-family: 'luma-icons';
+        height: 27px;
+        width: 29px;
+        font-size: 19px;
+        line-height: 21px;
+        padding-top: 2px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+    }
+}
+
+
