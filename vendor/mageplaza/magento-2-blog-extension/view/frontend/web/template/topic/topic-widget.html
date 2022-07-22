@@ -1,0 +1,32 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+
+<div class="mp-sidebar mpcss">
+    <div class="row">
+        <div class="block-title col-xs-12 sidebar-categories">
+            <p class="block-mp-sidebar-heading" role="heading" aria-level="2">Topics</p>
+        </div>
+        <div class="col-xs-12">
+            <ul class="block-content menu-categories" data-bind="foreach: topics" >
+
+                <li class="category-item">
+                    <a class="list-categories" data-bind="attr: {href: url}">
+                        <i class="fa fa-folder-o" aria-hidden="true">&nbsp;</i>
+                       <span data-bind="text: label" ></span>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+</style>

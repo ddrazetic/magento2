@@ -1,0 +1,31 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<div class="mp-sidebar mpcss">
+    <div class="row">
+        <div class="block-title col-xs-12 sidebar-tags">
+            <p class="block-mp-sidebar-heading" role="heading" aria-level="2">Tags</p>
+        </div>
+        <div class="col-xs-12" data-bind="foreach: tags" >
+
+            <a class="label label-default tags-list"
+               data-bind="attr:{href: url }">
+                <span class="span-size" data-bind="text: label"> </span>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+    .span-size {
+        font-size: 10px;
+    }
+
+
+</style>

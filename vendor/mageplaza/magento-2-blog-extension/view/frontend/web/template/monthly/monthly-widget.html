@@ -1,0 +1,35 @@
+<p class="knockoutInfo">changed to knockout --></p>
+<!--<div id="aaaaa">aaaaa</div>-->
+<!--<div id="bbbbb">bbbbb</div>-->
+<div class="mp-sidebar mpcss">
+    <div class="row">
+        <div class="block-title col-xs-12 sidebar-archives">
+            <p class="block-mp-sidebar-heading" role="heading"
+               aria-level="2">Monthly Archive</p>
+        </div>
+        <div class="col-xs-12">
+            <ul class="menu-archives" data-bind="foreach: monthly" >
+
+                <li class="archive-item">
+                    <a class="list-archives"
+
+                     data-bind="attr:{href: url }">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;
+                   <span  data-bind="text: label" > </span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+</style>

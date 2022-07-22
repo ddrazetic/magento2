@@ -1,0 +1,75 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<div class="mpcss post-view" id="mpblog-list-container">
+    <div class="post-list-content col-md-12 col-sm-8">
+        <div class="post-view-image col-xs-12">
+            <!-- ko if: post().image -->
+            <img class="img-responsive"
+                 data-bind=" attr: { alt: post().name, src: urlImage() + post().image } "
+            />
+            <!-- /ko -->
+        </div>
+        <div class="post-post_content col-xs-12" data-bind="html: post().post_content">
+        </div>
+        <div class="mp-clear"></div>
+        <div class="col-xs-12">
+            <hr/>
+            <div class="mp-post-info">
+                    <span><i class="fa fa-calendar-times-o">&nbsp;</i>
+                        <span data-bind="text: date()"></span>
+                    </span>
+                <!-- ko if: post().view_traffic -->
+                <span>|</span>
+                <span>
+                        <i class="mp-blog-icon mp-blog-traffic" aria-hidden="true"></i>
+                        View:
+                        <span data-bind="text: post().view_traffic"></span>
+                </span>
+                <!-- /ko -->
+
+                <!-- ko if: categories() -->
+                |
+                <span>
+                    <i class="fa fa-folder-open-o">&nbsp;</i>
+                    Categories:
+                    <span data-bind="html: categories()"></span>
+                </span>
+                <!-- /ko -->
+
+                <!-- ko if: tags() -->
+                |
+                <span>
+                    <i class="fa fa-tags"></i>
+                    Tags:
+                    <span data-bind="html: tags()"></span>
+                </span>
+                <!-- /ko -->
+
+
+                <!-- ko if: tags() -->
+                |
+                <span><i class="fa fa-user">&nbsp;</i>
+                    By:
+                    <a class="mp-info"  data-bind="text: authorName, attr: {href: authorUrl }" ></a>
+
+                </span>
+                <!-- /ko -->
+            </div>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+</style>

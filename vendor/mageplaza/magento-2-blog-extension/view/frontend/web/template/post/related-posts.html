@@ -1,0 +1,99 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<div class="block-blog-related topic-list mpcss" style="width: 90%;">
+    <h2>Related Posts</h2>
+
+    <!-- ko if: relatedMode() -->
+    <div class="owl-carousel owl-theme" data-bind="foreach: relatedPosts, owlCarouselInitiator">
+        <div class="item post-list-item ">
+            <div class="post-item-wraper">
+                <div class="post-image">
+                    <!-- ko if: image -->
+                    <a data-bind=" attr: { href: $parent.urlPost() + url_key + '.html'}"
+                    >
+                        <img class="img-responsive"
+                             data-bind="attr: { alt: name , src: $parent.urlPostImage() + image  }"
+                        />
+                    </a>
+                    <!-- /ko -->
+                    <!-- ko ifnot: image -->
+                    <a  data-bind=" attr: { href: $parent.urlPost() + url_key + '.html'}">
+                        <img class="img-responsive"
+                             data-bind="attr: { alt: name , src: $parent.noImageUrl()  }"/>
+                    </a>
+                    <!-- /ko -->
+                </div>
+                <div class="post-info-wraper">
+                    <h2 class="mp-post-title">
+                        <a class="post-link-title"
+                           data-bind="text: name, attr: { title: name ,
+                                        href: $parent.urlPost() + url_key + '.html' }"
+                        >
+                        </a>
+                    </h2>
+                    <div class="mp-post-info" data-bind="html: infoHTML">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .item.post-list-item.col-mp {
+            width: 100%;
+        }
+    </style>
+    <!-- /ko -->
+
+
+    <!-- ko ifnot: relatedMode() -->
+        <div  data-bind="foreach: relatedPosts"
+                class="related-content-container"
+                style="display: flex; flex-wrap: wrap;">
+            <div class="post-list-item col-mp mp-6 mp-lg-4 mp-md-6 mp-xs-12">
+                <div class="post-item-wraper">
+                    <div class="post-image">
+                        <!-- ko if: image -->
+                        <a  data-bind=" attr: { href: $parent.urlPost() + url_key + '.html'}">
+                            <img class="img-responsive"
+                                 data-bind="attr: { alt: name , src: $parent.urlPostImage() + image  }"/>
+                        </a>
+                        <!-- /ko -->
+                        <!-- ko ifnot: image -->
+                        <a  data-bind=" attr: { href: $parent.urlPost() + url_key + '.html'}">
+                            <img class="img-responsive"
+                                 data-bind="attr: { alt: name , src: $parent.noImageUrl()  }"/>
+                        </a>
+                        <!-- /ko -->
+                    </div>
+                    <div class="post-info-wraper">
+                        <h2 class="mp-post-title">
+                            <a class="post-link-title"
+                               data-bind="text: name, attr: { title: name ,
+                                        href: $parent.urlPost() + url_key + '.html' }">
+                            </a>
+                        </h2>
+                        <div class="mp-post-info"  data-bind="html: infoHTML">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mp-clear"></div>
+        </div>
+    <!-- /ko -->
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+</style>

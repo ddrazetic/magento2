@@ -1,0 +1,135 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<div class="products wrapper grid products-grid">
+    <!-- ko if: relatedMode() !== '1'-->
+    <ol class="products list items product-items" data-bind="foreach: products">
+
+        <li class="item product product-item">
+            <div class="product-item-info" data-container="product-grid">
+
+                <a data-bind="attr: {href: 'http://magento2.test/'+ url_key +'.html' }"
+                   class="product photo product-item-photo"
+                   tabindex="-1">
+                    <span class="product-image-container" style="width:240px;">
+                        <span class="product-image-wrapper" style="padding-bottom: 125%;">
+                            <img class="product-image-photo lazy entered loaded" max-width="240"
+                                 max-height="300"
+                                 data-bind="attr: { alt: name , src: image ? $parent.urlImage() + image  : $parent.noImageUrl()  }"/>
+                        </span>
+                    </span>
+                </a>
+                <div class="product details product-item-details">
+
+                    <strong class="product name product-item-name">
+                        <a class="product-item-link"
+                           data-bind="text: name , attr: {href: 'http://magento2.test/'+ url_key +'.html' }"
+                        >
+                        </a>
+                    </strong>
+                    <div data-bind="html: reviewHTML"></div>
+                    <div data-bind="html: priceHTML"></div>
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions">
+
+                            <div class="actions-primary">
+                                <!-- ko if: is_salable -->
+                                <form data-bind="submit: function(){return $parent.addService(entity_id, action, uenc, type_id,url_key) }">
+                                    <button class="action tocart primary " type=" submit">Add to cart</button>
+                                </form>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <!-- /ko -->
+
+    <!-- ko if: relatedMode() === '1'-->
+
+    <div class="owl-carousel owl-theme" data-bind="foreach: products, owlCarouselInitiatorProducts">
+
+        <div class="item product product-item mp-blog-slider-item">
+            <div class="product-item-info" data-container="product-grid">
+                <a data-bind="attr: {href: 'http://magento2.test/'+ url_key +'.html' }"
+                   class="product photo product-item-photo"
+                   tabindex="-1">
+                    <span class="product-image-container" style="width:240px;">
+                        <span class="product-image-wrapper" style="padding-bottom: 125%;">
+                            <img class="product-image-photo lazy entered loaded" max-width="240"
+                                 max-height="300"
+                                 data-bind="attr: { alt: name , src: image ? $parent.urlImage() + image  : $parent.noImageUrl()  }"/>
+                        </span>
+                    </span>
+                </a>
+
+                <div class="product details product-item-details">
+
+                    <strong class="product name product-item-name">
+                        <a class="product-item-link"
+                           data-bind="text: name , attr: {href: 'http://magento2.test/'+ url_key +'.html' }"
+                        > </a>
+                    </strong>
+                    <div data-bind="html: reviewHTML"></div>
+                    <div data-bind="html: priceHTML"></div>
+                    <div class="product-item-inner">
+                        <div class="product actions product-item-actions">
+
+                            <div class="actions-primary">
+                                <!-- ko if: is_salable -->
+                                <form data-bind="submit: function(){return $parent.addService(entity_id, action, uenc, type_id,url_key) }">
+                                    <button class="action tocart primary " type=" submit">Add to cart</button>
+                                </form>
+                                <!-- /ko -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        .item.product.product-item.mp-blog-slider-item {
+            width: 85%;
+            text-align: center;
+            height: 450px;
+            margin-top: 5px;
+        }
+
+        .owl-stage-outer {
+            padding-left: 5px;
+        }
+    </style>
+    <!-- /ko -->
+
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+    .product-image-photo {
+        bottom: 0;
+        display: block;
+        height: auto;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+</style>

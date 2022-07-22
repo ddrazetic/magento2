@@ -1,0 +1,64 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\Blog\Block\Category\Widget;
+
+/** @var Widget $block */
+$tree = $block->getTree();
+$treeFormatted=  str_replace("&quot;", "'", $block->escapeHtml(  $block->getCategoryTreeHtml($tree)));
+if ($tree) : ?>
+    <script type="text/javascript">
+        require(['Mageplaza_Blog/js/categorytreeChanged'], function () {
+        });
+    </script>
+<?php endif; ?>
+<?php if (false) : ?>
+    <div class="mp-sidebar mpcss">
+        <div class="row">
+            <div class="block-title col-xs-12 sidebar-categories">
+                <p class="block-mp-sidebar-heading" role="heading" aria-label="2"><?= $block->escapeHtml(__('Categories')) ?></p>
+            </div>
+            <div class="col-xs-12">
+                <?= $block->getCategoryTreeHtml($tree) ?>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
+<div id="category-widget" data-bind="scope: 'categorywidget'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#category-widget": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "categorywidget": {
+                        "component": "Mageplaza_Blog/js/category/category-widget",
+                         "tree": <?php echo json_encode($treeFormatted); ?>
+
+
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

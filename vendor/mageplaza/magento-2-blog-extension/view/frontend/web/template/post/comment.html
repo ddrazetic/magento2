@@ -1,0 +1,105 @@
+<p class="knockoutInfo">changed to knockout --></p>
+<div class="block-blog-related blog-comment" data-bind="commentInitiator">
+
+    <h2>Comments</h2>
+    <!--DEFAULT COMMENTS-->
+
+    <!-- ko if: typeComment() == 1 -->
+    <div class="related-content-container container default-cmt">
+
+        <!-- ko ifnot: isLoggedIn()  -->
+        <div class="col-mp default-cmt__cmt-login">
+            <button class="primary btn-primary default-cmt__cmt-login__btn-login">
+                Login
+            </button>
+        </div>
+        <!-- /ko -->
+
+        <div class="col-mp mp-12" style="float: left;">
+            <div class="default-cmt__content">
+                <div class="default-cmt__content__cmt-block">
+
+                    <!-- ko ifnot: isLoggedIn()  -->
+
+                    <form id="default-cmt__content__cmt-block__guest-form"
+                          data-mage-init='{"validation":{}}'>
+                        <div class="col-mp mp-6 default-cmt__content__cmt-block__guest-box">
+                            <label for="default-cmt__content__cmt-block__guest-box__name-input">Name
+                                *</label>
+                            <input id="default-cmt__content__cmt-block__guest-box__name-input"
+                                   type="text"
+                                   name="default-cmt__content__cmt-block__guest-box__name-input"
+                                   placeholder="Your display name"
+                            >
+                            <div for="default-cmt__content__cmt-block__guest-box__name-input"
+                                 class="mage-error-form" id="default-cmt__content__cmt-block__guest-box__name-input-error"
+                                 style="display: block;"></div>
+                        </div>
+                        <div class="col-mp mp-6 default-cmt__content__cmt-block__guest-box">
+                            <label for="default-cmt__content__cmt-block__guest-box__email-input">Email
+                                *</label>
+                            <input id="default-cmt__content__cmt-block__guest-box__email-input"
+                                   type="text"
+                                   name="default-cmt__content__cmt-block__guest-box__email-input"
+                                   placeholder="Your email"
+                            >
+                            <div for="default-cmt__content__cmt-block__guest-box__email-input"
+                                 class="mage-error-form" id="default-cmt__content__cmt-block__guest-box__email-input-error"
+                                 style="display: block;">
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- /ko -->
+
+                    <div class="default-cmt__content__cmt-block__cmt-box">
+                        <div class="col-mp mp-12">
+                            <label for="mp-guest-cmt-commentbox">Comment</label>
+                            <textarea class="default-cmt__content__cmt-block__cmt-box__cmt-input"
+                                      maxlength="255"
+                                      placeholder="Type comments here...">
+
+                                                            </textarea>
+                        </div>
+                        <div class="default-cmt__content__cmt-block__cmt-box__cmt-btn">
+                            <div class="default-cmt_loading" style="display: none">
+                                <img
+                                        data-bind="attr: { src: loader }"
+                                        alt="Loading...">
+                            </div>
+                            <button class="default-cmt__content__cmt-block__cmt-box__cmt-btn__btn-submit
+                                                             primary btn-primary">
+                                Comment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="default-cmt__content__cmt-content" data-bind="html: comments "></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /ko -->
+
+</div>
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+
+    .mage-error-form {
+        margin-top: 7px;
+
+        color: #e02b27;
+        font-size: 1.2rem;
+    }
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+</style>

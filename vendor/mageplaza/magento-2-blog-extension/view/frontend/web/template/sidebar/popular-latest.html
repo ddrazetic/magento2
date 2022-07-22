@@ -1,0 +1,93 @@
+<p class="knockoutInfo">changed to knockout --></p>
+<!--<div id="aaaaa">aaaaa</div>-->
+<!--<div id="bbbbb">bbbbb</div>-->
+
+<div class="mp-sidebar product info detailed">
+    <div class="product data items">
+        <div class="data item title active " id="tab-11">
+            <a class="data switch" id="">
+                <div>Popular</div>
+            </a>
+        </div>
+
+        <div data-bind="foreach: postsRecent" class="data item content" id="mostrecent1">
+
+            <div class="list-post-tabs">
+                <div class="post-left">
+                    <a data-bind=" attr: {title: name , href: $parent.urlPost() + url_key + '.html'  }">
+                        <!-- ko if: image -->
+                        <img class="img-responsive"
+                             data-bind="attr: { src: $parent.urlImage() + image,
+                              alt: name }">
+                        <!-- /ko -->
+                        <!-- ko ifnot: image -->
+
+                        <img class="img-responsive"
+                             data-bind="attr: { src: $parent.noImageUrl(),
+                              alt: name }">
+                        <!-- /ko -->
+
+                    </a>
+                </div>
+                <div class="post-right">
+                    <a data-bind=" attr: {title: name , href: $parent.urlPost() + url_key + '.html'  }">
+                        <span data-bind="text: name"></span>
+                    </a>
+                    <span data-bind="text: publish_date" class="create-at">
+
+                            </span>
+                </div>
+                <div class="mp-clear"></div>
+            </div>
+
+        </div>
+
+        <div class="data item title" id="tab-22">
+            <a class="data switch" id="">
+                <div>Latest</div>
+            </a>
+        </div>
+        <div data-bind="foreach: postsView" class="data item content" id="mostview1">
+
+            <div class="list-post-tabs">
+                <div class="post-left">
+                    <a data-bind=" attr: {title: name , href: $parent.urlPost() + url_key + '.html'  }">
+                        <!-- ko if: image -->
+                        <img class="img-responsive"
+                             data-bind="attr: { src: $parent.urlImage() + image,
+                              alt: name }">
+                        <!-- /ko -->
+                        <!-- ko ifnot: image -->
+
+                        <img class="img-responsive"
+                             data-bind="attr: { src: $parent.noImageUrl(),
+                              alt: name }">
+                        <!-- /ko -->
+
+                    </a>
+                </div>
+                <div class="post-right">
+                    <a data-bind=" attr: {title: name , href: $parent.urlPost() + url_key + '.html'  }">
+                        <span data-bind="text: name"></span>
+                    </a>
+                    <span data-bind="text: publish_date" class="create-at">
+
+                            </span>
+                </div>
+                <div class="mp-clear"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+</style>

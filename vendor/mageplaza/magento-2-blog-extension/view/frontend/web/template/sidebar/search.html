@@ -1,0 +1,70 @@
+<p class="knockoutInfo">changed to knockout --></p>
+<!--<div id="aaaaa">aaaaa</div>-->
+<!--<div id="bbbbb">bbbbb</div>-->
+<div class="mpblog-search">
+    <div class="field search">
+        <label class="label" for="mpblog-search-box" data-role="minisearch-label">
+            <span>Search</span>
+        </label>
+        <div class="control">
+            <input
+                    class="autocompletee"
+                    type="search"
+                    name="search"
+                    data-bind="value: query, valueUpdate: 'keyup'" placeholder="Search blogs here..."
+                    class="input-text"
+                    role="combobox"
+                    aria-haspopup="false"
+                    aria-autocomplete="both"
+            />
+        </div>
+    </div>
+    <div class="actions">
+        <button type="submit" title="Search" class="action search">
+            <i class="fa fa-search" aria-hidden="true" style="font-size: 16px;margin-top: 5px;"></i>
+        </button>
+    </div>
+</div>
+<div class="popup-post-search">
+    <div class="autocomplete-suggestions autocomplete-suggestion-changed "
+         data-bind="visible: posts().length > 0, foreach: posts"
+    >
+        <div class="autocomplete-suggestion onHoverPost "
+             data-bind="click: $parent.openUrl.bind(this, url),clickBubble: false">
+            <div class="mpblog-suggestion">
+                <div class="mpblog-suggestion-left">
+                    <img class="img-responsive"
+                         data-bind="attr:{src: image}"
+                    >
+                </div>
+                <div class="mpblog-suggestion-right image-visible">
+                    <div class="mpblog-product-line mpblog-product-name" data-bind="text: value"></div>
+                    <div class="mpblog-product-des"><p class="mpblog-short-des" data-bind="text: desc"></p></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p class="knockoutInfo"><----- </p>
+
+<style>
+    .popup-post-search{
+        position: relative;
+    }
+    .autocomplete-suggestion-changed {
+        max-height: 2000px;
+        z-index: 9999;
+        position: absolute;
+    }
+
+    .onHoverPost:hover {
+        background: #F0F0F0;
+        cursor: pointer;
+    }
+
+    .knockoutInfo {
+        color: red;
+    }
+
+</style>

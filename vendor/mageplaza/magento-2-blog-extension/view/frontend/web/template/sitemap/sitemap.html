@@ -1,0 +1,55 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<!-- ko if: posts().length -->
+<h2>Posts</h2>
+<ul data-bind="foreach: posts">
+
+    <li><a data-bind="text: name , attr:{ href: $parent.urlPost() + url_key + '.html' } "
+    ></a></li>
+
+</ul>
+<!-- /ko -->
+
+<!-- ko if: categories().length -->
+<h2>Categories</h2>
+<ul data-bind="foreach: categories">
+
+    <li><a data-bind="text: name , attr:{ href: $parent.urlCategory() + url_key + '.html' } "
+    ></a></li>
+
+</ul>
+<!-- /ko -->
+
+<!-- ko if: tags().length -->
+<h2>Tags</h2>
+<ul data-bind="foreach: tags">
+
+    <li><a data-bind="text: name , attr:{ href: $parent.urlTag() + url_key + '.html' } "
+    ></a></li>
+
+</ul>
+<!-- /ko -->
+
+<!-- ko if: topics().length -->
+<h2>Topics</h2>
+<ul data-bind="foreach: topics">
+
+    <li><a data-bind="text: name , attr:{ href: $parent.urlTopic() + url_key + '.html' } "
+    ></a></li>
+
+</ul>
+<!-- /ko -->
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+</style>

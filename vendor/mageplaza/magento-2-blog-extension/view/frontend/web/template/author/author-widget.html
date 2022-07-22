@@ -1,0 +1,84 @@
+<p class="knockoutInfo">changed to knockout --></p>
+
+<!--<div class="mp-sidebar mpcss">-->
+<!--    <div class="row">-->
+<!--        <div class="block-title col-xs-12 sidebar-tags">-->
+<!--            <p class="block-mp-sidebar-heading" role="heading" aria-level="2">Tags</p>-->
+<!--        </div>-->
+<!--        <div class="col-xs-12" data-bind="foreach: tags" >-->
+
+<!--            <a class="label label-default tags-list"-->
+<!--               data-bind="attr:{href: url }">-->
+<!--                <span class="span-size" data-bind="text: label"> </span>-->
+<!--            </a>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="mp-sidebar mpcss">
+    <div class="row" data-bind="with: author">
+        <div class="author-name col-xs-12">
+            <h3 data-bind="text: name"></h3>
+        </div>
+        <div class="author-image col-xs-12">
+            <img class="img-responsive"
+                 data-bind="attr:{alt: name, src: image ?$parent.urlImage() +  image : $parent.defaultImage  }"
+            />
+        </div>
+        <div
+                data-bind="html: short_description ? short_description : 'No info'"
+                class="author-content col-xs-12">
+        </div>
+        <div class="author-social col-xs-12">
+            <!-- ko if: facebook_link -->
+            <a data-bind="attr:{href: facebook_link}" target="_blank">
+                <img class="img-responsive"
+                     data-bind="attr:{alt:name, src: $parent.facebookImage()}"
+                     align="middle"
+                />
+            </a>
+            <!-- /ko -->
+            <!-- ko ifnot: facebook_link -->
+
+            <img class="img-responsive"
+                 align="middle"
+                 data-bind="attr:{alt:name, src: $parent.facebookImage()}"
+            />
+            <!-- /ko -->
+
+            <!-- ko if: twitter_link -->
+            <a data-bind="attr:{href: twitter_link}"target="_blank">
+                <img class="img-responsive"
+                     align="middle"
+                     data-bind="attr:{alt:name, src: $parent.twitterImage()}"
+
+                />
+            </a>
+            <!-- /ko -->
+            <!-- ko ifnot: twitter_link -->
+            <img class="img-responsive"
+                 align="middle"
+                 data-bind="attr:{alt:name, src: $parent.twitterImage()}"
+
+            />
+            <!-- /ko -->
+            <div class="mp-clear"></div>
+        </div>
+        <div class="author-border col-xs-12"></div>
+    </div>
+</div>
+
+<p class="knockoutInfo"><----- </p>
+
+<style>
+
+    .knockoutInfo {
+        color: red;
+    }
+
+    .span-size {
+        font-size: 10px;
+    }
+
+</style>
